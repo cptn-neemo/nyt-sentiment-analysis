@@ -1,0 +1,7 @@
+#!/bin/bash
+rm get-news.zip
+cd ./serverless/get-news
+zip -r ../../get-news.zip *
+cd ../..
+aws lambda update-function-code --function-name sentiment-analysis-get-news \
+    --zip-file fileb://get-news.zip
