@@ -1,1 +1,2 @@
-aws lambda invoke --function-name sentiment-analysis-get-news out
+aws lambda invoke --function-name sentiment-analysis-get-news out --log-type Tail \
+--query 'LogResult' --output text |  base64 -d
