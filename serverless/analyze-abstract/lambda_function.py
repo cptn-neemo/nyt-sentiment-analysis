@@ -2,6 +2,7 @@ import boto3
 from textblob import TextBlob
 import json
 import datetime
+import urllib.parse
 
 s3 = boto3.client('s3')
 dynamodb = boto3.client('dynamodb')
@@ -26,7 +27,8 @@ def lambda_handler(event, context):
 
     for record in event['Records']:
         bucket_name = record['s3']['bucket']['name']
-        key = record['s3']['object']['key']
+        key = urllib.parse.unquote(record['s3']['object']['key'])
+        print(key)
         abstract_obj = s3.get_object(Bucket=bucket_name, Key=key)
 
         sentiment = analyze_abstract(abstract_obj)

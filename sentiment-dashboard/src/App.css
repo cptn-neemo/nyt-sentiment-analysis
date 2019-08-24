@@ -1,0 +1,12 @@
+.header {
+  font-size: 1.75em;
+  text-align: center;
+  height: 12%;
+}
+
+.chart-body {
+  height: 88%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
